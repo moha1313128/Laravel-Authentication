@@ -6,7 +6,7 @@ use App\Http\Controllers\BaseController as BaseController;
 use Illuminate\Http\Request;
 use App\Book;
 use Validator;
-
+    
 class BookController extends BaseController
 {
     /**

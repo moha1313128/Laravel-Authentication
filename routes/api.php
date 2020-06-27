@@ -17,12 +17,24 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('user/register', 'AuthController@register');
-Route::post('user/login', 'AuthController@login');
+// Api routes with jwt
+// Route::post('user/register', 'AuthController@register');
+// Route::post('user/login', 'AuthController@login');
 
-Route::middleware('jwt.auth')->get('/users', function (Request $request) {
+// Route::middleware('jwt.auth')->get('/users', function (Request $request) {
+//     return auth()->user();
+// });
+// Route::middleware('jwt.auth')->group(function() {
+//     Route::resource('/books', 'BookController');
+// });
+
+// Api routes with passport
+Route::post('register', 'AuthController@register');
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return auth()->user();
 });
-Route::middleware('jwt.auth')->group(function() {
+
+Route::middleware('auth:api')->group(function() {
     Route::resource('/books', 'BookController');
 });
